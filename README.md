@@ -7,10 +7,14 @@
 - [Pandas](https://pandas.pydata.org/pandas-docs/stable/)
 - [Seaborn](https://seaborn.pydata.org/api.html)
 - [Numpy](https://docs.scipy.org/doc/numpy/user/index.html)
+- [Scikit-learn](https://scikit-learn.org/stable/index.html)
 
 <h1 align="center">
     Changelog
 </h1>
+
+## 01/09/2019 03:46
+- Added scikit-learn to documentations section
 
 ## 31/08/2019 00:12
 - Added Documentations section
