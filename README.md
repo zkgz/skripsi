@@ -8,10 +8,17 @@
 - [Seaborn](https://seaborn.pydata.org/api.html)
 - [Numpy](https://docs.scipy.org/doc/numpy/user/index.html)
 - [Scikit-learn](https://scikit-learn.org/stable/index.html)
+- [Imbalanced-learn](https://imbalanced-learn.readthedocs.io/en/stable/index.html)
 
 <h1 align="center">
     Changelog
 </h1>
+
+## 02/09/2019 07:00
+- Figured that SMOTE significantly increase event detection rate
+- Removed lr_nr.py file (Logistic Regression with No-Resampling)
+- Added lr.py file (Logistic Regression)
+- Added Imbalanced-learn to documentations section
 
 ## 01/09/2019 10:57
 - Figured that Logistic Regression performs poorly in imbalanced data
