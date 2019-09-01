@@ -21,14 +21,14 @@
 - Figured that ADASYN performs best in event detection rate
 
 ## 02/09/2019 07:00
-- Figured that SMOTE significantly increase event detection rate
 - Removed lr_nr.py file (Logistic Regression with No-Resampling)
 - Added lr.py file (Logistic Regression)
 - Added Imbalanced-learn to documentations section
+- Figured that SMOTE significantly increases event detection rate
 
 ## 01/09/2019 10:57
-- Figured that Logistic Regression performs poorly in imbalanced data
 - Added lr_nr.py file (Logistic Regression with No-Resampling)
+- Figured that Logistic Regression performs poorly in imbalanced data
 
 ## 01/09/2019 03:46
 - Added scikit-learn to documentations section
