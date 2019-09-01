@@ -14,6 +14,12 @@
     Changelog
 </h1>
 
+## 02/09/2019 07:25
+- Added BorderlineSMOTE to lr.py
+- Added ADASYN to lr.py
+- Added RandomOverSampler to lr.py
+- Figured that ADASYN performs best in event detection rate
+
 ## 02/09/2019 07:00
 - Figured that SMOTE significantly increase event detection rate
 - Removed lr_nr.py file (Logistic Regression with No-Resampling)
