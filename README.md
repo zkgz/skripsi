@@ -14,6 +14,11 @@
     Changelog
 </h1>
 
+## 02/09/2019 12:00
+- Added RandomUnderSampler to lr.py
+- Added TomekLinks to lr.py
+- Figured that TomekLinks relies heavily on the distance between the positive and negative classes
+
 ## 02/09/2019 07:25
 - Added BorderlineSMOTE to lr.py
 - Added ADASYN to lr.py
@@ -26,7 +31,7 @@
 - Added Imbalanced-learn to documentations section
 - Figured that SMOTE significantly increases event detection rate
 
-## 01/09/2019 10:57
+## 01/09/2019 10:57s
 - Added lr_nr.py file (Logistic Regression with No-Resampling)
 - Figured that Logistic Regression performs poorly in imbalanced data
 
