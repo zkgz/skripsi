@@ -11,6 +11,17 @@
 - [Imbalanced-learn](https://imbalanced-learn.readthedocs.io/en/stable/index.html)
 
 <h1 align="center">
+    Package Installations
+</h1>
+## pip:
+- Scikit-learn: `pip install scikit-learn`
+- imblearn: `pip install -U imbalanced-learn`
+
+## conda:
+- Scikit-learn: `conda install scikit-learn`
+- imblearn: `conda install -c conda-forge imbalanced-learn`
+
+<h1 align="center">
     Changelog
 </h1>
 
