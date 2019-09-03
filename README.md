@@ -15,20 +15,20 @@
 </h1>
 
 ## pip:
-- sklearn (Scikit-learn): `pip install scikit-learn`
-- imblearn (Imbalanced-learn): `pip install -U imbalanced-learn`
-- pandas: `pip install pandas`
 - numpy: `pip install numpy`
 - seaborn: `pip install seaborn`
-- matplotlib.pyplot: `pip install matplotlib`
+- pandas: `pip install pandas`
+- sklearn (Scikit-learn): `pip install scikit-learn`
+- imblearn (Imbalanced-learn): `pip install imblearn`
+- matplotlib: `pip install matplotlib`
 
 ## conda:
-- sklearn (Scikit-learn): `conda install scikit-learn`
-- imblearn (Imbalanced-learn): `conda install -c conda-forge imbalanced-learn`
-- pandas: `conda install -c conda-forge pandas`
 - numpy: `conda install -c conda-forge numpy`
 - seaborn: `conda install -c conda-forge seaborn`
-- matplotlib.pyplot: `conda install -c conda-forge matplotlib`
+- pandas: `conda install -c conda-forge pandas`
+- sklearn (Scikit-learn): `conda install scikit-learn`
+- imblearn (Imbalanced-learn): `conda install -c conda-forge imbalanced-learn`
+- matplotlib: `conda install -c conda-forge matplotlib`
 
 <h1 align="center">
     Changelog
