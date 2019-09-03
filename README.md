@@ -15,16 +15,27 @@
 </h1>
 
 ## pip:
-- Scikit-learn: `pip install scikit-learn`
-- imblearn: `pip install -U imbalanced-learn`
+- sklearn (Scikit-learn): `pip install scikit-learn`
+- imblearn (Imbalanced-learn): `pip install -U imbalanced-learn`
+- pandas: `pip install pandas`
+- numpy: `pip install numpy`
+- seaborn: `pip install seaborn`
+- matplotlib.pyplot: `pip install matplotlib`
 
 ## conda:
-- Scikit-learn: `conda install scikit-learn`
-- imblearn: `conda install -c conda-forge imbalanced-learn`
+- sklearn (Scikit-learn): `conda install scikit-learn`
+- imblearn (Imbalanced-learn): `conda install -c conda-forge imbalanced-learn`
+- pandas: `conda install -c conda-forge pandas`
+- numpy: `conda install -c conda-forge numpy`
+- seaborn: `conda install -c conda-forge seaborn`
+- matplotlib.pyplot: `conda install -c conda-forge matplotlib`
 
 <h1 align="center">
     Changelog
 </h1>
+
+## 03/09/2019 11:20
+- Added Installations section to readme.md
 
 ## 02/09/2019 12:00
 - Added RandomUnderSampler to lr.py
