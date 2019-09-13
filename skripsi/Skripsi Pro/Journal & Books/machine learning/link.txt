@@ -1,0 +1,17 @@
+1. http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf
+Pattern Recognition and Machine Learning (Cited by 36127)
+
+2. https://arxiv.org/pdf/1201.0490.pdf
+Scikit-learn: Machine learning in Python (Cited by 17026)
+
+3. https://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf
+A Few Useful Things to Know about Machine Learning (Cited by 1553)
+
+4. https://science.sciencemag.org/content/349/6245/255
+Machine learning: Trends, perspectives, and prospects (Cited by 1014)
+
+5. https://kkpatel7.files.wordpress.com/2015/04/alppaydin_machinelearning_2010.pdf
+Introduction to Machine Learning (Cited by 5012)
+
+6. https://www.cin.ufpe.br/~tfl2/artificial-intelligence-modern-approach.9780131038059.25368.pdf
+Artificial Intelligence: A Modern Approach (Cited by 36770)

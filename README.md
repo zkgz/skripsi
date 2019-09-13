@@ -34,6 +34,12 @@
     Changelog
 </h1>
 
+## 13/09/2019 11:20
+- Added skripsi folder
+
+## 03/09/2019 11:20
+- Added Installations section to readme.md
+
 ## 03/09/2019 11:20
 - Added Installations section to readme.md
 

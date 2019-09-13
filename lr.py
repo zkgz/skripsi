@@ -16,21 +16,30 @@ from imblearn.under_sampling import TomekLinks
 
 # Machine Learning Algorithms
 from sklearn.linear_model import LogisticRegressionCV
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix, roc_curve
+from sklearn.metrics import precision_score, recall_score, f1_score, roc_auc_score, accuracy_score, classification_report
 from sklearn.model_selection import cross_val_score
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.utils.multiclass import unique_labels
 
-# Parameters
-seed=1
-cross_validations=5
+#### Parameters ####
+seed = 1
+cross_validations = 5
+####################
 
 # modified glass dataset, positiveClass=2, negativeClass=[0, 1, 6], samples=192, positives=17, negatives=175
-featureNames= ["Rl", "Na", "Mg", "Al", "Si", "K", "Ca", "Ba", "Fe", "Class"]
+featureNames = ["Rl", "Na", "Mg", "Al", "Si", "K", "Ca", "Ba", "Fe", "Class"]
 df = pd.read_csv(r'dataset/sample/glass.csv', header=None, names=featureNames)
 X = df
 y = df.pop("Class").values
-print(Counter(y))
+
+f, ax = plt.subplots(figsize=(10, 6))
+corr = df.corr()
+hm = sns.heatmap(round(corr,2), annot=True, ax=ax, cmap="coolwarm",fmt='.2f',
+            linewidths=.05)
+f.subplots_adjust(top=0.93)
+t = f.suptitle('Wine Attributes Correlation Heatmap', fontsize=14)
+
 
 ### RESAMPLING ###
 ## Oversampling

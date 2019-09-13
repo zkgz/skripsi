@@ -1,0 +1,11 @@
+1. https://arxiv.org/pdf/1707.03905.pdf
+Influence of Resampling on Accuracy of Imbalanced Classification (Cited by 31)
+
+2. https://link.springer.com/article/10.3758/BRM.40.3.879
+Asymptotic and resampling strategies for assessing and comparing indirect effects in multiple mediator models (Cited by 20285)
+
+3. http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.101.5878&rep=rep1&type=pdf
+The Effect of Oversampling and Undersampling on Classifying Imbalanced Text Datasets (Cited by 45)
+
+4. https://ieeexplore.ieee.org/abstract/document/7563084
+Effective prediction of three common diseases by combining SMOTE with Tomek links technique for imbalanced medical data (Cited by 4)

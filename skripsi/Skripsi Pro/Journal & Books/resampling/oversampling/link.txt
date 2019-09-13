@@ -1,0 +1,17 @@
+1. https://arxiv.org/pdf/1106.1813.pdf
+SMOTE: Synthetic Minority Over-sampling Technique (Cited by 8188)
+
+2. https://ieeexplore.ieee.org/abstract/document/5403368
+MSMOTE: Improving Classification Performance When Training Data is Imbalanced (Cited by 134)
+
+3. https://sci2s.ugr.es/keel/keel-dataset/pdfs/2005-Han-LNCS.pdf
+Borderline-SMOTE: A New Over-Sampling Method in Imbalanced Data Sets Learning (Cited by 1208)
+
+4. https://ieeexplore.ieee.org/abstract/document/4633969
+ADASYN: Adaptive synthetic sampling approach for imbalanced learning (Cited by 838)
+
+5. https://ieeexplore.ieee.org/abstract/document/7707454
+Comparing Oversampling Techniques to Handle the Class Imbalance Problem: A Customer Churn Prediction Case Study (Cited by 48)
+
+6. https://www.jair.org/index.php/jair/article/view/11192/26406
+SMOTE for Learning from Imbalanced Data: Progress and Challenges, Marking the 15-year Anniversary (Cited by 68)
