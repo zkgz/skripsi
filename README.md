@@ -34,6 +34,10 @@
     Changelog
 </h1>
 
+## 16/09/2019 23:15
+- Added .gitignore file
+- removed dataset and journal folder to reduce file size
+
 ## 13/09/2019 11:20
 - Added skripsi folder
 
