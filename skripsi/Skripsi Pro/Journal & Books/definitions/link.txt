@@ -1,0 +1,5 @@
+roc.pdf (Measuring the Accuracy of Diagnostic Systems)
+https://science.sciencemag.org/content/240/4857/1285 (Cited by 7683)
+
+roc2.pdf (Computationally efficient confidence intervals for cross-validated area under the ROC curve estimates)
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4533123/ (Cited by 52)

@@ -1,0 +1,56 @@
+1. https://dl.acm.org/citation.cfm?id=1961199
+LIBSVM: A Library for Support Vector Machines (Cited by 40412)
+
+2. https://link.springer.com/article/10.1023/A:1018628609742
+Least Squares Support Vector Machine Classifiers (Cited by 8083)
+
+3. http://resource.heartonline.cn/20150528/1_3kOQSTg.pdf
+Applied Logistic Regression (Cited by 53524)
+
+4. https://www.cc.gatech.edu/~isbell/reading/papers/Rish.pdf
+An empirical study of the naive Bayes classifier (Cited by 2048)
+
+5. https://www.aaai.org/Papers/FLAIRS/2004/Flairs04-097.pdf
+The Optimality of Naive Bayes (Cited by 1403)
+
+6. https://link.springer.com/chapter/10.1007/BFb0026666
+Naive (Bayes) at forty: The independence assumption in information retrieval (Cited by 2372)
+
+7. https://www.taylorfrancis.com/books/9781315139470
+Classification and Regression Trees (Cited by 40920)
+
+8. https://ieeexplore.ieee.org/abstract/document/97458
+A survey of decision tree classifier methodology (Cited by 1852)
+
+9. https://www.tandfonline.com/doi/abs/10.1080/01431160412331269698
+Random forest classifier for remote sensing classification (Cited by 935)
+
+10. https://www.researchgate.net/profile/Andy_Liaw/publication/228451484_Classification_and_Regression_by_RandomForest/links/53fb24cc0cf20a45497047ab/Classification-and-Regression-by-RandomForest.pdf
+Classification and regression by randomForest (Cited by 9079)'
+
+11. https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-3
+Gene selection and classification of microarray data using random forest (Cited by 2075)
+
+12. https://anuradhasrinivas.files.wordpress.com/2013/08/29721562-zurada-introduction-to-artificial-neural-systems-wpc-1992.pdf
+Introduction to aritificial neural systems (Cited by 4222)
+
+13. https://ieeexplore.ieee.org/abstract/document/547205
+Combining classifiers (Cited by 6245)
+
+14. https://books.google.co.id/books?hl=en&lr=&id=y8ORL3DWt4sC&oi=fnd&pg=PR13&dq=learning+with+kernels+support+vector+machines&ots=bLyQ8sUaDC&sig=E_-OIef9ujdqF8lNP-xN6TaYLxg&redir_esc=y#v=onepage&q=learning%20with%20kernels%20support%20vector%20machines&f=false
+Learning with kernels: support vector machines, regularization, optimization, and beyond (Cited by 10921)
+
+15. http://www.cs.ukzn.ac.za/~sviriri/Books/Machine-Learning-Pattern-Recognition/book5.pdf
+Neural Networks for Pattern Recognition (Cited by 29515)
+
+16. https://www.computer.org/csdl/journal/tk/2006/01/k0063/13rRUy3xY8t 
+Training Cost-Sensitive Neural Networks with Methods Addressing the Class Imbalance Problem (Cited by 839)
+
+17. https://cdn.preterhuman.net/texts/science_and_technology/artificial_intelligence/Neural%20Networks%20-%20A%20Comprehensive%20Foundation%20-%20Simon%20Haykin.pdf
+Neural Networks: A Comprehensive Foundation (Cited by 48708)
+
+18. https://ieeexplore.ieee.org/abstract/document/897072
+Neural Networks for Classification: A Survey (Cited by 1664)
+
+19. https://www.sciencedirect.com/science/article/pii/S0957417406003137
+Visualization and analysis of classifiers performance in multi-class medical data (Cited by 1723)

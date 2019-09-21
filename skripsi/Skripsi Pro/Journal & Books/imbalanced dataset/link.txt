@@ -1,0 +1,38 @@
+1. http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.96.9248&rep=rep1&type=pdf
+Handling imbalanced datasets: A review (Cited by 516)
+
+2. https://www3.nd.edu/~dial/publications/chawla2005data.pdf
+DATA MINING FOR IMBALANCED DATASETS: AN OVERVIEW (Cited by 874)
+
+3. https://pdfs.semanticscholar.org/0773/bedbc8df191d30379c978ab82a69b83411a5.pdf
+On the Classification of Imbalanced Datasets (Cited by 25)
+
+4. http://www.ijmlc.org/papers/307-K0020.pdf
+Addressing the Class Imbalance Problem in Medical Datasets (Cited by 110)
+
+5. https://sci2s.ugr.es/keel/pdf/algorithm/articulo/2011-IEEE%20TSMC%20partC-%20GalarFdezBarrenecheaBustinceHerrera.pdf
+A Review on Ensembles for the Class Imbalance Problem: Bagging-, Boosting-, and Hybrid-Based Approaches (Cited by 1075)
+
+6. https://www.researchgate.net/publication/43248411_An_approach_for_classification_of_highly_imbalanced_data_using_weighting_and_undersampling
+An approach for classification of highly imbalanced data using weighting and undersampling (Cited by 65)
+
+7. https://eecs.ceas.uc.edu/~aralescu/PAPERS/VRMaics2005.pdf
+Issues in Mining Imbalanced Data Sets - A Review Paper (Cited by 188)
+
+8. http://home.ijasca.com/data/documents/13IJASCA-070301_Pg176-204_Classification-with-class-imbalance-problem_A-Review.pdf
+Classification with class imbalance problem: A Review (Cited by 74)
+
+9. http://www.softcomputing.net/jnic2.pdf
+A Review of Class Imbalance Problem (Cited by 50)
+
+10. https://www.site.uottawa.ca/~hguo028/papers/KDDExplorations2004.pdf
+Learning from Imbalanced Data Sets with Boosting and Data Generation: The DataBoost-IM Approach (Cited by 515)
+
+11. http://pages.stern.nyu.edu/~fprovost/Papers/skew.PDF
+Machine Learning from Imbalanced Data Sets 101 (Cited by 414)
+
+12. https://www.computer.org/csdl/journal/tk/2009/09/ttk2009091263/13rRUwIF69B
+Learning from Imbalanced Data (Cited by 3923)
+
+13. http://www.site.uottawa.ca/~nat/Workshop2003/Wu-final.pdf
+Class-boundary alignment for imbalanced dataset learning (Cited by 419)

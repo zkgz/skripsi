@@ -34,9 +34,14 @@
     Changelog
 </h1>
 
+## 21/09/2019 17:20
+- Readded journal folder
+- Changed skripsi citation style to APA
+- Removed draft_props.pdf
+
 ## 16/09/2019 23:15
 - Added .gitignore file
-- removed dataset and journal folder to reduce file size
+- Removed dataset and journal folder to reduce file size
 
 ## 13/09/2019 11:20
 - Added skripsi folder
