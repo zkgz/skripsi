@@ -1,8 +1,10 @@
 # Mandatory
 import pandas as pd
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
+import warnings
 from collections import Counter
 
 # Oversampling
@@ -15,111 +17,179 @@ from imblearn.under_sampling import RandomUnderSampler
 from imblearn.under_sampling import TomekLinks
 
 # Machine Learning Algorithms
-from sklearn.linear_model import LogisticRegressionCV
-from sklearn.metrics import confusion_matrix, roc_curve
-from sklearn.metrics import precision_score, recall_score, f1_score, roc_auc_score, accuracy_score, classification_report
-from sklearn.model_selection import cross_val_score
+
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import classification_report
+from sklearn.metrics import accuracy_score, precision_recall_fscore_support
+from sklearn.model_selection import cross_val_score, KFold
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.utils.multiclass import unique_labels
 
+from sklearn.svm import SVC
+from sklearn.neural_network import MLPClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.naive_bayes import ComplementNB
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.linear_model import LogisticRegression
+
+# ignore python warnings
+warnings.filterwarnings("ignore")
+
 #### Parameters ####
-seed = 1
+seed = 101
 cross_validations = 5
 ####################
 
-# modified glass dataset, positiveClass=2, negativeClass=[0, 1, 6], samples=192, positives=17, negatives=175
+# Modified glass dataset, positiveClass=2, negativeClass=[0, 1, 6], samples=192, positives=17, negatives=175
 featureNames = ["Rl", "Na", "Mg", "Al", "Si", "K", "Ca", "Ba", "Fe", "Class"]
 df = pd.read_csv(r'dataset/sample/glass.csv', header=None, names=featureNames)
 X = df
 y = df.pop("Class").values
 
-f, ax = plt.subplots(figsize=(10, 6))
-corr = df.corr()
-hm = sns.heatmap(round(corr,2), annot=True, ax=ax, cmap="coolwarm",fmt='.2f',
-            linewidths=.05)
-f.subplots_adjust(top=0.93)
-t = f.suptitle('Wine Attributes Correlation Heatmap', fontsize=14)
+# K-Fold Cross Validation #
+kf = KFold(n_splits=cross_validations, random_state=seed, shuffle=True)
+
+# 6 resampling strategies, 1 no-resampling #
+res_name = ['smote', 'bsmote', 'adasyn', 'ros', 'rus', 'tl', 'no-resampling']
+res = []
+res.append(SMOTE(random_state=seed))
+res.append(BorderlineSMOTE(random_state=seed))
+res.append(ADASYN(random_state=seed))
+res.append(RandomOverSampler(random_state=seed))
+res.append(RandomUnderSampler(random_state=seed))
+res.append(TomekLinks(sampling_strategy='majority', random_state=seed))
+res.append(None)
+
+# 6 classification models #
+clf_name = ['lr', 'svm', 'mlp', 'dt', 'nb', 'knn']
+clf = []
+clf.append(LogisticRegression(solver='liblinear', multi_class='ovr', random_state=seed))
+clf.append(SVC(kernel='rbf', gamma='auto', random_state=seed))
+clf.append(MLPClassifier(activation='logistic', solver='lbfgs', hidden_layer_sizes=(5, 2), random_state=seed))
+clf.append(DecisionTreeClassifier(criterion='entropy', random_state=seed))
+clf.append(ComplementNB(alpha=0.5, norm=False))
+clf.append(KNeighborsClassifier(n_neighbors=3, weights='distance'))
+
+avg = np.zeros((7, 6, 4, 2)) # 6+1 resampling, 6 classifier, 4 metrics (acc, pre, rec, fs), 2 class
+
+for train_index, test_index in kf.split(X):
+    X_train, X_test = X.loc[train_index], X.loc[test_index]
+    y_train, y_test = y[train_index], y[test_index]
+    for i in range(len(res)):
+        if(i==6):
+            X_res, y_res = X_train, y_train
+        else:
+            X_res, y_res = res[i].fit_resample(X_train, y_train)
+        
+        # fit with balanced (resampled) data
+        for j in range(len(clf)):
+            model = clf[j].fit(X_res, y_res)
+            y_pred = model.predict(X_test)
+
+            acc = accuracy_score(y_test, y_pred)
+            pre, rec, fs, sup = precision_recall_fscore_support(y_test, y_pred)
+
+            # in pre, rec, fs: index 0 = negative (majority), 1 = positive (minority)
+            avg[i, j, 0, 0] += acc
+            avg[i, j, 1, 0] += pre[0]
+            avg[i, j, 2, 0] += rec[0]
+            avg[i, j, 3, 0] += fs[0]
+
+            avg[i, j, 0, 1] += acc
+            avg[i, j, 1, 1] += pre[1]
+            avg[i, j, 2, 1] += rec[1]
+            avg[i, j, 3, 1] += fs[1]
+
+# print score
+for i in range(len(res)):
+    for j in range(len(clf)):
+        avg[i, j, 0:4] /= cross_validations
+        print(clf_name[j], ' with ', res_name[i], ': ', 
+            round(avg[i, j, 0, 1], 2), 
+            round(avg[i, j, 1, 1], 2), 
+            round(avg[i, j, 2, 1], 2),
+            round(avg[i, j, 3, 1], 2))
+    print()
+
+accs = np.zeros(6)
+pres = np.zeros(6)
+recs = np.zeros(6)
+fss = np.zeros(6)
+for i in range(len(clf)):
+    for j in range(len(res) - 1):
+        accs[i] += avg[j, i, 0, 0]
+        pres[i] += avg[j, i, 1, 0]
+        recs[i] += avg[j, i, 2, 0]
+        fss[i] += avg[j, i, 3, 0]
+    accs[i] /= 6
+    pres[i] /= 6
+    recs[i] /= 6
+    fss[i] /= 6
+
+labels = clf_name
+x = np.arange(len(labels))  # the label locations
+width = 0.20  # the width of the bars
+
+fig, ax = plt.subplots()
+rects_ = []
+rects_.append(ax.bar(x - width, accs, width, label='acc'))
+rects_.append(ax.bar(x - width/2, pres, width, label='pre'))
+rects_.append(ax.bar(x + width/2, recs, width, label='rec'))
+rects_.append(ax.bar(x + width, fss, width, label='fs'))
+
+# Add some text for labels, title and custom x-axis tick labels, etc.
+ax.set_ylabel('Scores')
+ax.set_title('Average Scores by Classifiers on majority class')
+ax.set_xticks(x)
+ax.set_xticklabels(labels)
+ax.legend()
+
+#####################
+accs = np.zeros(6)
+pres = np.zeros(6)
+recs = np.zeros(6)
+fss = np.zeros(6)
+for i in range(len(clf)):
+    for j in range(len(res) - 1) :
+        accs[i] += avg[j, i, 0, 1]
+        pres[i] += avg[j, i, 1, 1]
+        recs[i] += avg[j, i, 2, 1]
+        fss[i] += avg[j, i, 3, 1]
+    accs[i] /= 6
+    pres[i] /= 6
+    recs[i] /= 6
+    fss[i] /= 6
+
+fig2, ax2 = plt.subplots()
+rects_2 = []
+rects_2.append(ax2.bar(x - width, accs, width, label='acc'))
+rects_2.append(ax2.bar(x - width/2, pres, width, label='pre'))
+rects_2.append(ax2.bar(x + width/2, recs, width, label='rec'))
+rects_2.append(ax2.bar(x + width, fss, width, label='fs'))
+
+# Add some text for labels, title and custom x-axis tick labels, etc.
+ax2.set_ylabel('Scores')
+ax2.set_title('Average Scores by Classifiers on minority class')
+ax2.set_xticks(x)
+ax2.set_xticklabels(labels)
+ax2.legend()
+########################
+
+def autolabel(list, axes):
+    """Attach a text label above each bar in *rects*, displaying its height."""
+    for rects in list:
+        for rect in rects:
+            height = rect.get_height()
+            axes.annotate('{}'.format(height),
+                        xy=(rect.get_x() + rect.get_width() / 2, height),
+                        xytext=(0, 3),  # 3 points vertical offset
+                        textcoords="offset points",
+                        ha='center', va='bottom')
+
+autolabel(rects_, ax)
 
 
-### RESAMPLING ###
-## Oversampling
-# SMOTE
-smote = SMOTE(random_state=seed)
-X_smote, y_smote = smote.fit_resample(X, y)
-# BorderlineSMOTE
-bsmote = BorderlineSMOTE(random_state=seed)
-X_bsmote, y_bsmote = bsmote.fit_resample(X, y)
-# ADASYN
-adasyn = ADASYN(random_state=seed)
-X_adasyn, y_adasyn = adasyn.fit_resample(X, y)
-# RandomOverSampler
-ros = RandomOverSampler(random_state=seed)
-X_ros, y_ros = ros.fit_resample(X, y)
-
-## Undersampling
-# RandomUnderSampler
-rus = RandomUnderSampler(random_state=seed)
-X_rus, y_rus = rus.fit_resample(X, y)
-# TomekLinks
-tl = TomekLinks(sampling_strategy='majority', random_state=seed)
-X_tl, y_tl = tl.fit_resample(X, y)
-print(Counter(y_tl))
-### CLASSIFICATION ###
-
-# LR with no resmpling
-lr_nr = LogisticRegressionCV(cv=cross_validations, random_state=seed, solver='liblinear', multi_class='ovr').fit(X, y)
-y_pred_nr = lr_nr.predict(X)
-## LR with oversampling techniques
-# LR with SMOTE
-lr_smote = LogisticRegressionCV(cv=cross_validations, random_state=seed, solver='liblinear', multi_class='ovr').fit(X_smote, y_smote)
-y_pred_smote = lr_smote.predict(X)
-# LR with BorderlineSMOTE
-lr_bsmote = LogisticRegressionCV(cv=cross_validations, random_state=seed, solver='liblinear', multi_class='ovr').fit(X_bsmote, y_bsmote)
-y_pred_bsmote = lr_bsmote.predict(X)
-# LR with ADASYN
-lr_adasyn = LogisticRegressionCV(cv=cross_validations, random_state=seed, solver='liblinear', multi_class='ovr').fit(X_adasyn, y_adasyn)
-y_pred_adasyn = lr_adasyn.predict(X)
-# LR with RandomOverSampler
-lr_ros = LogisticRegressionCV(cv=cross_validations, random_state=seed, solver='liblinear', multi_class='ovr').fit(X_ros, y_ros)
-y_pred_ros = lr_ros.predict(X)
-## LR with undersampling techniques
-# LR with RandomUnderSampler
-lr_rus = LogisticRegressionCV(cv=cross_validations, random_state=seed, solver='liblinear', multi_class='ovr').fit(X_rus, y_rus)
-y_pred_rus = lr_rus.predict(X)
-# LR with BorderlineSMOTE
-lr_tl = LogisticRegressionCV(cv=cross_validations, random_state=seed, solver='liblinear', multi_class='ovr').fit(X_tl, y_tl)
-y_pred_tl = lr_tl.predict(X)
-
-### EVALUATION ###
-
-# confusion matrix with no resampling
-tn_nr, fp_nr, fn_nr, tp_nr = confusion_matrix(y, y_pred_nr).ravel()
-# confusion matrix with SMOTE
-tn_smote, fp_smote, fn_smote, tp_smote = confusion_matrix(y, y_pred_smote).ravel()
-# confusion matrix with BorderlineSMOTE
-tn_bsmote, fp_bsmote, fn_bsmote, tp_bsmote = confusion_matrix(y, y_pred_bsmote).ravel()
-# confusion matrix with ADASYN
-tn_adasyn, fp_adasyn, fn_adasyn, tp_adasyn = confusion_matrix(y, y_pred_adasyn).ravel()
-# confusion matrix with RandomOverSampler
-tn_ros, fp_ros, fn_ros, tp_ros = confusion_matrix(y, y_pred_ros).ravel()
-# confusion matrix with RandomUnderSampler
-tn_rus, fp_rus, fn_rus, tp_rus = confusion_matrix(y, y_pred_rus).ravel()
-# confusion matrix with TomekLinks
-tn_tl, fp_tl, fn_tl, tp_tl = confusion_matrix(y, y_pred_tl).ravel()
-
-print('\nNo Resampling Accuracy:', lr_nr.score(X, y))
-print('Smote Accuracy:', lr_smote.score(X, y))
-print('BorderlineSmote Accuracy:', lr_bsmote.score(X, y))
-print('ADASYN Accuracy:', lr_adasyn.score(X, y))
-print('RandomOverSampler Accuracy:', lr_ros.score(X, y))
-print('RandomUnderSampler Accuracy:', lr_rus.score(X, y))
-print('TomekLinks Accuracy:', lr_tl.score(X, y))
-
-print('\nTN, FP, FN, TP:')
-print('No Resampling:', tn_nr, fp_nr, fn_nr, tp_nr)
-print('SMOTE:', tn_smote, fp_smote, fn_smote, tp_smote)
-print('BorderlineSMOTE:', tn_bsmote, fp_bsmote, fn_bsmote, tp_bsmote)
-print('ADASYN:', tn_adasyn, fp_adasyn, fn_adasyn, tp_adasyn)
-print('RandomOverSampler:', tn_ros, fp_ros, fn_ros, tp_ros)
-print('RandomUnderSampler:', tn_rus, fp_rus, fn_rus, tp_rus)
-print('TomekLinks:', tn_tl, fp_tl, fn_tl, tp_tl)
+fig.tight_layout()
+autolabel(rects_2, ax2)
+fig2.tight_layout()
+plt.show()

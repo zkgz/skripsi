@@ -34,6 +34,12 @@
     Changelog
 </h1>
 
+## 06/10/2019 23:45
+- Completed every combination of resampling and classifier
+- Added `~$*` (temporary file) to .gitignore
+- Added some plot regarding classifier performance
+- Opened some issue
+
 ## 21/09/2019 17:20
 - Readded journal folder
 - Changed skripsi citation style to APA
