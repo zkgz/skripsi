@@ -173,6 +173,69 @@ ax2.set_title('Average Scores by Classifiers on minority class')
 ax2.set_xticks(x)
 ax2.set_xticklabels(labels)
 ax2.legend()
+
+########################
+accs = np.zeros(6)
+pres = np.zeros(6)
+recs = np.zeros(6)
+fss = np.zeros(6)
+for i in range(len(res) - 1):
+    for j in range(len(clf)) :
+        accs[i] += avg[i, j, 0, 0]
+        pres[i] += avg[i, j, 1, 0]
+        recs[i] += avg[i, j, 2, 0]
+        fss[i] += avg[i, j, 3, 0]
+    accs[i] /= 6
+    pres[i] /= 6
+    recs[i] /= 6
+    fss[i] /= 6
+
+fig3, ax3 = plt.subplots()
+rects_3 = []
+rects_3.append(ax3.bar(x - width, accs, width, label='acc'))
+rects_3.append(ax3.bar(x - width/2, pres, width, label='pre'))
+rects_3.append(ax3.bar(x + width/2, recs, width, label='rec'))
+rects_3.append(ax3.bar(x + width, fss, width, label='fs'))
+
+# Add some text for labels, title and custom x-axis tick labels, etc.
+labels = res_name
+
+ax3.set_ylabel('Scores')
+ax3.set_title('Average Scores by Resampling Strategy on majority class')
+ax3.set_xticks(x)
+ax3.set_xticklabels(labels)
+ax3.legend()
+########################
+accs = np.zeros(6)
+pres = np.zeros(6)
+recs = np.zeros(6)
+fss = np.zeros(6)
+for i in range(len(res) - 1):
+    for j in range(len(clf)) :
+        accs[i] += avg[i, j, 0, 1]
+        pres[i] += avg[i, j, 1, 1]
+        recs[i] += avg[i, j, 2, 1]
+        fss[i] += avg[i, j, 3, 1]
+    accs[i] /= 6
+    pres[i] /= 6
+    recs[i] /= 6
+    fss[i] /= 6
+
+fig4, ax4 = plt.subplots()
+rects_4 = []
+rects_4.append(ax4.bar(x - width, accs, width, label='acc'))
+rects_4.append(ax4.bar(x - width/2, pres, width, label='pre'))
+rects_4.append(ax4.bar(x + width/2, recs, width, label='rec'))
+rects_4.append(ax4.bar(x + width, fss, width, label='fs'))
+
+# Add some text for labels, title and custom x-axis tick labels, etc.
+labels = res_name
+
+ax4.set_ylabel('Scores')
+ax4.set_title('Average Scores by Resampling Strategy on minority class')
+ax4.set_xticks(x)
+ax4.set_xticklabels(labels)
+ax4.legend()
 ########################
 
 def autolabel(list, axes):
@@ -187,9 +250,11 @@ def autolabel(list, axes):
                         ha='center', va='bottom')
 
 autolabel(rects_, ax)
-
-
-fig.tight_layout()
 autolabel(rects_2, ax2)
+autolabel(rects_3, ax3)
+autolabel(rects_4, ax4)
+fig.tight_layout()
 fig2.tight_layout()
+fig3.tight_layout()
+fig4.tight_layout()
 plt.show()

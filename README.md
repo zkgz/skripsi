@@ -34,6 +34,9 @@
     Changelog
 </h1>
 
+## 07/10/2019 12:42
+- Fixed issue #2
+
 ## 06/10/2019 23:45
 - Completed every combination of resampling and classifier
 - Added `~$*` (temporary file) to .gitignore
