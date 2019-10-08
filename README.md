@@ -34,9 +34,10 @@
     Changelog
 </h1>
 
-## 07/10/2019 xx:xx
-- added `/dataset/*.csv` to .gitignore
-
+## 08/10/2019 13:25
+- Added `/dataset/*.csv` to .gitignore
+- Refactor code
+- Fixed issue #1
 
 ## 07/10/2019 12:42
 - Fixed issue #2

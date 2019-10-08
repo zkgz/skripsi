@@ -111,141 +111,6 @@ for i in range(len(res)):
             round(avg[i, j, 3, 1], 2), )
     print()
 
-accs = np.zeros(6, 2)
-pres = np.zeros(6, 2)
-recs = np.zeros(6, 2)
-fss = np.zeros(6, 2)
-for i in range(len(clf)):
-    for j in range(len(res) - 1):
-        for k in range(2):
-            accs[i, k] += avg[j, i, 0, k] / 6
-            pres[i, k] += avg[j, i, 1, k] / 6
-            recs[i, k] += avg[j, i, 2, k] / 6
-            fss[i, k] += avg[j, i, 3, k] / 6
-    for j in range(2):
-        accs[i, j] = round(accs[i, j] / 6, 2)
-        pres[i, j] = round(pres[i, j] / 6, 2)
-        recs[i, j] = round(recs[i, j] / 6, 2)
-        fss[i, j] = round(fss[i, j] / 6, 2)
-
-labels = clf_name
-x = np.arange(len(labels))  # the label locations
-width = 0.20  # the width of the bars
-
-for i in range(2):
-    if(i==0):
-        state = 'majority'
-    else:
-        state = 'minority'
-fig, ax = plt.subplots()
-rects_ = []
-rects_.append(ax.bar(x - width, accs, width, label='acc'))
-rects_.append(ax.bar(x - width/2, pres, width, label='pre'))
-rects_.append(ax.bar(x + width/2, recs, width, label='rec'))
-rects_.append(ax.bar(x + width, fss, width, label='fs'))
-
-# Add some text for labels, title and custom x-axis tick labels, etc.
-ax.set_ylabel('Scores')
-
-ax.set_title('Average Scores by Classifiers on majority class')
-ax.set_xticks(x)
-ax.set_xticklabels(labels)
-ax.legend()
-
-#####################
-accs = np.zeros(6)
-pres = np.zeros(6)
-recs = np.zeros(6)
-fss = np.zeros(6)
-for i in range(len(clf)):
-    for j in range(len(res) - 1) :
-        accs[i] += avg[j, i, 0, 1]
-        pres[i] += avg[j, i, 1, 1]
-        recs[i] += avg[j, i, 2, 1]
-        fss[i] += avg[j, i, 3, 1]
-    accs[i] /= 6
-    pres[i] /= 6
-    recs[i] /= 6
-    fss[i] /= 6
-
-fig2, ax2 = plt.subplots()
-rects_2 = []
-rects_2.append(ax2.bar(x - width, accs, width, label='acc'))
-rects_2.append(ax2.bar(x - width/2, pres, width, label='pre'))
-rects_2.append(ax2.bar(x + width/2, recs, width, label='rec'))
-rects_2.append(ax2.bar(x + width, fss, width, label='fs'))
-
-# Add some text for labels, title and custom x-axis tick labels, etc.
-ax2.set_ylabel('Scores')
-ax2.set_title('Average Scores by Classifiers on minority class')
-ax2.set_xticks(x)
-ax2.set_xticklabels(labels)
-ax2.legend()
-
-########################
-accs = np.zeros(6)
-pres = np.zeros(6)
-recs = np.zeros(6)
-fss = np.zeros(6)
-for i in range(len(res) - 1):
-    for j in range(len(clf)) :
-        accs[i] += avg[i, j, 0, 0]
-        pres[i] += avg[i, j, 1, 0]
-        recs[i] += avg[i, j, 2, 0]
-        fss[i] += avg[i, j, 3, 0]
-    accs[i] /= 6
-    pres[i] /= 6
-    recs[i] /= 6
-    fss[i] /= 6
-
-fig3, ax3 = plt.subplots()
-rects_3 = []
-rects_3.append(ax3.bar(x - width, accs, width, label='acc'))
-rects_3.append(ax3.bar(x - width/2, pres, width, label='pre'))
-rects_3.append(ax3.bar(x + width/2, recs, width, label='rec'))
-rects_3.append(ax3.bar(x + width, fss, width, label='fs'))
-
-# Add some text for labels, title and custom x-axis tick labels, etc.
-labels = res_name
-
-ax3.set_ylabel('Scores')
-ax3.set_title('Average Scores by Resampling Strategy on majority class')
-ax3.set_xticks(x)
-ax3.set_xticklabels(labels)
-ax3.legend()
-########################
-accs = np.zeros(6)
-pres = np.zeros(6)
-recs = np.zeros(6)
-fss = np.zeros(6)
-for i in range(len(res) - 1):
-    for j in range(len(clf)) :
-        accs[i] += avg[i, j, 0, 1]
-        pres[i] += avg[i, j, 1, 1]
-        recs[i] += avg[i, j, 2, 1]
-        fss[i] += avg[i, j, 3, 1]
-    accs[i] /= 6
-    pres[i] /= 6
-    recs[i] /= 6
-    fss[i] /= 6
-
-fig4, ax4 = plt.subplots()
-rects_4 = []
-rects_4.append(ax4.bar(x - width, accs, width, label='acc'))
-rects_4.append(ax4.bar(x - width/2, pres, width, label='pre'))
-rects_4.append(ax4.bar(x + width/2, recs, width, label='rec'))
-rects_4.append(ax4.bar(x + width, fss, width, label='fs'))
-
-# Add some text for labels, title and custom x-axis tick labels, etc.
-labels = res_name
-
-ax4.set_ylabel('Scores')
-ax4.set_title('Average Scores by Resampling Strategy on minority class')
-ax4.set_xticks(x)
-ax4.set_xticklabels(labels)
-ax4.legend()
-########################
-
 def autolabel(list, axes):
     """Attach a text label above each bar in *rects*, displaying its height."""
     for rects in list:
@@ -256,14 +121,93 @@ def autolabel(list, axes):
                         xytext=(0, 3),  # 3 points vertical offset
                         textcoords="offset points",
                         ha='center', va='bottom')
+                        
+###########################################
+# classifier
+accs = np.zeros((6, 2))
+pres = np.zeros((6, 2))
+recs = np.zeros((6, 2))
+fss = np.zeros((6, 2))
+for i in range(len(clf)):
+    for j in range(len(res) - 1):
+        for k in range(2):
+            accs[i, k] += avg[j, i, 0, k] / 6
+            pres[i, k] += avg[j, i, 1, k] / 6
+            recs[i, k] += avg[j, i, 2, k] / 6
+            fss[i, k] += avg[j, i, 3, k] / 6
+    for j in range(2):
+        accs[i, j] = round(accs[i, j], 2)
+        pres[i, j] = round(pres[i, j], 2)
+        recs[i, j] = round(recs[i, j], 2)
+        fss[i, j] = round(fss[i, j], 2)
 
-autolabel(rects_, ax)
-autolabel(rects_2, ax2)
-autolabel(rects_3, ax3)
-autolabel(rects_4, ax4)
+labels = clf_name
+x = np.arange(len(labels))  # the label locations
+width = 0.20  # the width of the bars
 
-fig.tight_layout()
-fig2.tight_layout()
-fig3.tight_layout()
-fig4.tight_layout()
+for i in range(2):
+    if(i==0):
+        state = 'majority'
+    else:
+        state = 'minority'
+    fig, ax = plt.subplots()
+    rects_ = []
+    rects_.append(ax.bar(x - width-(width/2), accs[:,i], width, label='acc'))
+    rects_.append(ax.bar(x - width/2, pres[:,i], width, label='pre'))
+    rects_.append(ax.bar(x + width/2, recs[:,i], width, label='rec'))
+    rects_.append(ax.bar(x + width+(width/2), fss[:,i], width, label='fs'))
+
+    # Add some text for labels, title and custom x-axis tick labels, etc.
+    ax.set_ylabel('Scores')
+
+    ax.set_title('Average Scores by Classifiers on ' + state + ' class - ' + str(cross_validations) + ' cross validataions')
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels)
+    ax.legend()
+    fig.tight_layout()
+    autolabel(rects_, ax)
+#################################
+# resampling
+accs = np.zeros((7, 2))
+pres = np.zeros((7, 2))
+recs = np.zeros((7, 2))
+fss = np.zeros((7, 2))
+for i in range(len(res)):
+    for j in range(len(clf)):
+        for k in range(2):
+            accs[i, k] += avg[i, j, 0, k] / 7
+            pres[i, k] += avg[i, j, 1, k] / 7
+            recs[i, k] += avg[i, j, 2, k] / 7
+            fss[i, k] += avg[i, j, 3, k] / 7
+    for j in range(2):
+        accs[i, j] = round(accs[i, j], 2)
+        pres[i, j] = round(pres[i, j], 2)
+        recs[i, j] = round(recs[i, j], 2)
+        fss[i, j] = round(fss[i, j], 2)
+        
+labels = res_name
+x = np.arange(len(labels))  # the label locations
+width = 0.20  # the width of the bars
+for i in range(2):
+    if(i==0):
+        state = 'majority'
+    else:
+        state = 'minority'
+    fig, ax = plt.subplots()
+    rects_ = []
+    rects_.append(ax.bar(x - width-(width/2), accs[:,i], width, label='acc'))
+    rects_.append(ax.bar(x - width/2, pres[:,i], width, label='pre'))
+    rects_.append(ax.bar(x + width/2, recs[:,i], width, label='rec'))
+    rects_.append(ax.bar(x + width+(width/2), fss[:,i], width, label='fs'))
+
+    # Add some text for labels, title and custom x-axis tick labels, etc.
+    ax.set_ylabel('Scores')
+
+    ax.set_title('Average Scores by Resampling Strategy on ' + state + ' class - ' + str(cross_validations) + ' cross validataions')
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels)
+    ax.legend()
+    fig.tight_layout()
+    autolabel(rects_, ax)
+
 plt.show()
