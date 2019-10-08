@@ -35,6 +35,9 @@
 </h1>
 
 ## 08/10/2019 13:25
+- Fixed issue #3 and #4
+
+## 08/10/2019 13:25
 - Added `/dataset/*.csv` to .gitignore
 - Refactor code
 - Fixed issue #1

@@ -50,7 +50,7 @@ y = df.pop("Class").values
 kf = KFold(n_splits=cross_validations, random_state=seed, shuffle=True)
 
 # 6 resampling strategies, 1 no-resampling #
-res_name = ['smote', 'bsmote', 'adasyn', 'ros', 'rus', 'tl', 'no-resampling']
+res_name = ['smote', 'bsmote', 'adasyn', 'ros', 'rus', 'tl', 'noRes']
 res = []
 res.append(SMOTE(random_state=seed))
 res.append(BorderlineSMOTE(random_state=seed))
@@ -121,7 +121,7 @@ def autolabel(list, axes):
                         xytext=(0, 3),  # 3 points vertical offset
                         textcoords="offset points",
                         ha='center', va='bottom')
-                        
+
 ###########################################
 # classifier
 accs = np.zeros((6, 2))
@@ -210,4 +210,23 @@ for i in range(2):
     fig.tight_layout()
     autolabel(rects_, ax)
 
+names = []
+combinations = []
+for i in range(len(clf)):
+    for j in range(len(res) - 1):
+        names.append(res_name[j]+"-"+clf_name[i])
+        combinations.append(round(avg[i, j, 2, 1], 2))
+fig, ax = plt.subplots()
+x = np.arange(len(names))  # the label locations
+width = 0.2  # the width of the bars
+rects_ = []
+labels = names
+rects_.append(ax.bar(x, combinations, width, label='rec'))
+ax.set_ylabel('Scores')
+ax.set_title('Average Scores by Individual combination on minority class - ' + str(cross_validations) + ' cross validataions')
+ax.set_xticks(x)
+ax.set_xticklabels(labels)
+ax.legend()
+fig.tight_layout()
+autolabel(rects_, ax)
 plt.show()
