@@ -107,29 +107,36 @@ for i in range(len(res)):
         print(clf_name[j], ' with ', res_name[i], ': ', 
             round(avg[i, j, 0, 1], 2), 
             round(avg[i, j, 1, 1], 2), 
-            round(avg[i, j, 2, 1], 2),
-            round(avg[i, j, 3, 1], 2))
+            round(avg[i, j, 2, 1], 2), 
+            round(avg[i, j, 3, 1], 2), )
     print()
 
-accs = np.zeros(6)
-pres = np.zeros(6)
-recs = np.zeros(6)
-fss = np.zeros(6)
+accs = np.zeros(6, 2)
+pres = np.zeros(6, 2)
+recs = np.zeros(6, 2)
+fss = np.zeros(6, 2)
 for i in range(len(clf)):
     for j in range(len(res) - 1):
-        accs[i] += avg[j, i, 0, 0]
-        pres[i] += avg[j, i, 1, 0]
-        recs[i] += avg[j, i, 2, 0]
-        fss[i] += avg[j, i, 3, 0]
-    accs[i] /= 6
-    pres[i] /= 6
-    recs[i] /= 6
-    fss[i] /= 6
+        for k in range(2):
+            accs[i, k] += avg[j, i, 0, k] / 6
+            pres[i, k] += avg[j, i, 1, k] / 6
+            recs[i, k] += avg[j, i, 2, k] / 6
+            fss[i, k] += avg[j, i, 3, k] / 6
+    for j in range(2):
+        accs[i, j] = round(accs[i, j] / 6, 2)
+        pres[i, j] = round(pres[i, j] / 6, 2)
+        recs[i, j] = round(recs[i, j] / 6, 2)
+        fss[i, j] = round(fss[i, j] / 6, 2)
 
 labels = clf_name
 x = np.arange(len(labels))  # the label locations
 width = 0.20  # the width of the bars
 
+for i in range(2):
+    if(i==0):
+        state = 'majority'
+    else:
+        state = 'minority'
 fig, ax = plt.subplots()
 rects_ = []
 rects_.append(ax.bar(x - width, accs, width, label='acc'))
@@ -139,6 +146,7 @@ rects_.append(ax.bar(x + width, fss, width, label='fs'))
 
 # Add some text for labels, title and custom x-axis tick labels, etc.
 ax.set_ylabel('Scores')
+
 ax.set_title('Average Scores by Classifiers on majority class')
 ax.set_xticks(x)
 ax.set_xticklabels(labels)
@@ -253,6 +261,7 @@ autolabel(rects_, ax)
 autolabel(rects_2, ax2)
 autolabel(rects_3, ax3)
 autolabel(rects_4, ax4)
+
 fig.tight_layout()
 fig2.tight_layout()
 fig3.tight_layout()
