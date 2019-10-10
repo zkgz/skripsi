@@ -72,10 +72,12 @@ clf.append(KNeighborsClassifier(n_neighbors=3, weights='distance'))
 
 avg = np.zeros((7, 6, 4, 2)) # 6+1 resampling, 6 classifier, 4 metrics (acc, pre, rec, fs), 2 class
 
+# cross validations
 for train_index, test_index in kf.split(X):
     X_train, X_test = X.loc[train_index], X.loc[test_index]
     y_train, y_test = y[train_index], y[test_index]
     for i in range(len(res)):
+        #resample data
         if(i==6):
             X_res, y_res = X_train, y_train
         else:

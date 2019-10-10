@@ -34,6 +34,10 @@
     Changelog
 </h1>
 
+## 09/10/2019 13:25
+- Renamed `lr.py` to `sample.py`
+- Removed `example.py`
+
 ## 08/10/2019 13:25
 - Fixed issue #3 and #4
 
