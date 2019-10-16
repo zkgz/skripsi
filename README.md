@@ -21,6 +21,8 @@
 - sklearn (Scikit-learn): `pip install scikit-learn`
 - imblearn (Imbalanced-learn): `pip install imblearn`
 - matplotlib: `pip install matplotlib`
+- tensorflow: `pip install tensorflow`
+- keras: `pip install keras`
 
 ## conda:
 - numpy: `conda install -c conda-forge numpy`
@@ -29,10 +31,28 @@
 - sklearn (Scikit-learn): `conda install scikit-learn`
 - imblearn (Imbalanced-learn): `conda install -c conda-forge imbalanced-learn`
 - matplotlib: `conda install -c conda-forge matplotlib`
+- tensorflow: `conda install -c conda-forge tensorflow`
+- keras: `conda install -c conda-forge keras`
+
+<h1 align="center">
+    Special Thanks
+</h1>
+- janiobachmann from Kaggle
 
 <h1 align="center">
     Changelog
 </h1>
+
+## 16/10/2019 10:42
+- Added cc.py
+- Added s.py
+- Added sb.py
+- Almost done
+
+## 13/10/2019 10:42
+- Added testing.py
+- Added tensorflow and keras to Package Installations section
+- Added Special Thanks section
 
 ## 09/10/2019 13:25
 - Renamed `lr.py` to `sample.py`
