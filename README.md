@@ -38,10 +38,15 @@
     Special Thanks
 </h1>
 - janiobachmann from Kaggle
+- Grant from 3b1b
 
 <h1 align="center">
     Changelog
 </h1>
+
+## 20/10/2019 16:05
+- Added normality.py
+- Added test.ipynb
 
 ## 16/10/2019 10:42
 - Added cc.py
