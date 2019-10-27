@@ -45,6 +45,10 @@
     Changelog
 </h1>
 
+## 28/10/2019 06:55
+- Completed creditcard.ipynb 
+- Completed the trilogy
+
 ## 27/10/2019 17:15
 - Fixed readme typos
 - Removed normality.py
