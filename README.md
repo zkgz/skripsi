@@ -37,12 +37,24 @@
 <h1 align="center">
     Special Thanks
 </h1>
+
 - janiobachmann from Kaggle
 - Grant from 3b1b
 
 <h1 align="center">
     Changelog
 </h1>
+
+## 27/10/2019 17:15
+- Fixed readme typos
+- Removed normality.py
+- Removed s.py
+- Removed sb.py
+- Removed testing.py
+- Removed cc.py
+- Added creditcard.ipynb 
+- Added segment.ipynb (complete)
+- Added spambase.ipynb (complete)
 
 ## 20/10/2019 16:05
 - Added normality.py
@@ -115,7 +127,7 @@
 - Added Imbalanced-learn to documentations section
 - Figured that SMOTE significantly increases event detection rate
 
-## 01/09/2019 10:57s
+## 01/09/2019 10:57
 - Added lr_nr.py file (Logistic Regression with No-Resampling)
 - Figured that Logistic Regression performs poorly in imbalanced data
 
