@@ -111,9 +111,6 @@
 ## 03/09/2019 11:20
 - Added Installations section to readme.md
 
-## 03/09/2019 11:20
-- Added Installations section to readme.md
-
 ## 02/09/2019 12:00
 - Added RandomUnderSampler to lr.py
 - Added TomekLinks to lr.py
