@@ -45,6 +45,10 @@
     Changelog
 </h1>
 
+## 02/11/2019 02:42
+- Updated skrip.docx
+- Added `segmentation_result.csv` and `spambase_result.csv`
+
 ## 28/10/2019 06:55
 - Completed creditcard.ipynb 
 - Completed the trilogy
