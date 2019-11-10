@@ -45,6 +45,12 @@
     Changelog
 </h1>
 
+## 10/11/2019 12:20
+- Added `Presentation1.pptx`
+- Added `Draft Hasil.docx`
+- Added `Draft Hasil.pdf`
+- `Skripsi.docx` is not yet done
+
 ## 02/11/2019 02:42
 - Updated skrip.docx
 - Added `segmentation_result.csv` and `spambase_result.csv`
