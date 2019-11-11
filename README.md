@@ -45,6 +45,14 @@
     Changelog
 </h1>
 
+## 11/11/2019 10:00
+- Finalized `Draft hasil.docx`
+- `Skripsi.docx` is not yet done
+- Added PCA Transformation result to `creditcard.ipynb`, `segment.ipynb`, and `spambase.ipynb`
+
+## 10/11/2019 21:45
+- Added Shapiro-Wilk Normality Test Result to `creditcard.ipynb`, `segment.ipynb`, and `spambase.ipynb`
+
 ## 10/11/2019 12:20
 - Added `Presentation1.pptx`
 - Added `Draft Hasil.docx`
