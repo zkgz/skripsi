@@ -45,6 +45,9 @@
     Changelog
 </h1>
 
+## 25/11/2019 09:33
+- Added Multicollinearity test in skrip.docx
+
 ## 11/11/2019 10:00
 - Finalized `Draft hasil.docx`
 - `Skripsi.docx` is not yet done
