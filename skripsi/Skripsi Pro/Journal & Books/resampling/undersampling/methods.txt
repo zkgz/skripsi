@@ -1,4 +1,0 @@
-Undersampling techniques :
-- Random Undersampling
-- Tomek links
-- SBC

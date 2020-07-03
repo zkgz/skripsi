@@ -1,7 +1,0 @@
-- Logistic Regression
-- Naive Bayes
-- Decision Trees
-- Random Forest
-- Neural Network
-- Nearest Neighbor
-- Support Vector Machines
